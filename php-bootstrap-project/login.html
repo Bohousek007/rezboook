@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Přihlášení</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #003399;
+      --success-color: #2d8659;
+      --danger-color: #dc3545;
+      --light-blue: #e5ecfb;
+      --primary-blue: #092969;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      background-color: #f3f3f3;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    /* ====== NAVIGACE ====== */
+    .navbar {
+      background-color: #fff;
+      padding: 12px 60px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-brand img {
+      height: 40px;
+    }
+
+    .heading-font {
+      color: #082654;
+    }
+
+    .divider {
+      width: 1px;
+      height: 20px;
+      background-color: #d1d5db;
+      margin: 0 15px;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      font-weight: 400;
+      color: #082654;
+    }
+
+    /* ====== HLAVNÍ OBSAH (roztahuje se, aby footer zůstal dole) ====== */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .navbar .nav-item {
+      font-size: 14px;
+      color: #082654;
+      margin-left: 20px;
+    }
+
+    .navbar .badge {
+      padding: 10px 20px;
+      border-radius: 30px;
+    }
+
+    .table-container {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ====== DROPDOWNY (FILTRY) ====== */
+    .filter-container {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .filter-container select {
+      padding: 8px 14px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      height: 40px;
+      min-width: 200px;
+      background-color: white;
+    }
+
+    /* ====== TLAČÍTKA ====== */
+    .btn-primary {
+      background-color: #003399;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 24px;
+      font-size: 14px;
+    }
+
+    .btn-primary:hover {
+      background-color: #002266;
+    }
+
+    .btn-outline-danger {
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .logout-btn {
+      background: transparent;
+      border: none;
+      padding: 0;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .logout-btn:hover {
+      opacity: 0.8;
+    }
+
+    /* ====== TABULKA ====== */
+    .table {
+      font-size: 14px;
+      border-collapse: collapse;
+      /* Sloučí okraje buněk */
+      width: 100%;
+      background: white;
+    }
+
+    .table th,
+    .table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid #E0E3F0;
+      /* Jemné oddělení řádků */
+      text-align: left;
+    }
+
+    /* Odstranění box-shadow na buňkách */
+    .table td {
+      box-shadow: none;
+    }
+
+    /* ====== STAVY REZERVACÍ ====== */
+    .status-cancelled {
+      color: red;
+      font-weight: 400;
+      font-size: 13px;
+    }
+
+    .status-success {
+      color: #0E7F5C;
+      font-weight: 400;
+      font-size: 13px;
+    }
+
+    /* ====== TLAČÍTKO ZRUŠIT ====== */
+    .btn-cancel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #FCE8E8;
+      color: #D82C2C;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-size: 12px;
+      font-weight: 500;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .btn-cancel:hover {
+      background-color: #F8D7DA;
+      color: #C82333;
+    }
+
+    .btn-cancel svg {
+      margin-right: 6px;
+    }
+
+    .pagination-controls {
+      display: flex;
+      gap: 10px;
+    }
+
+    .pagination-btn {
+      background-color: transparent;
+      border: 1px solid #A1B3CE;
+      color: #A1B3CE;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: 0.2s ease-in-out;
+    }
+
+    .pagination-btn:hover {
+      background-color: #E0E7FF;
+      border-color: #6366F1;
+      color: #6366F1;
+    }
+
+    .entries-dropdown .form-select {
+      width: 70px;
+      padding: 6px 12px;
+      font-size: 14px;
+      border: 1px solid #E5E7EB;
+      border-radius: 6px;
+      background-color: #F9FAFB;
+      color: #1F2937;
+      cursor: pointer;
+    }
+
+    .card {
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Zajištění konzistentního stylu nadpisů */
+    h2.heading-font {
+      font-size: 30px;
+      /* Zmenšení velikosti nadpisu */
+      font-weight: 400;
+      /* Nastavení méně tučného textu */
+      color: #082654;
+    }
+
+    .dobit-kredity {
+      display: flex;
+      position: absolute;
+      left: 480px;
+      padding: 10px 60px;
+      color: white;
+      background: #0E7F5C;
+      border-color: #0E7F5C;
+      border-radius: 14284.3px;
+      text-align: center;
+      /* Zarovnání textu na střed */
+      display: flex;
+      /* Použití flexboxu pro lepší zarovnání */
+      justify-content: center;
+      /* Zarovnání horizontálně */
+      align-items: center;
+      /* Zarovnání vertikálně */
+      width: fit-content;
+      /* Přizpůsobení šířky obsahu */
+    }
+
+    .background-card {
+      background: #D8F8E8;
+      height: 180px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: #082654;
+    }
+
+    .form-box {
+      background: white;
+      padding: 42px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 400px;
+    }
+
+    .input-group {
+      background: #F6F7FB;
+      border: 1px solid #dcdfe6;
+      border-radius: 8px;
+      padding: 10px;
+      align-items: center;
+      transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .input-group:focus-within {
+      border: 1px solid #003399;
+      box-shadow: 0 0 5px rgba(0, 51, 153, 0.5);
+    }
+
+    .input-group-text {
+      background: transparent;
+      border: none;
+      font-size: 18px;
+      color: #a1a5b3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+    }
+
+    .form-control {
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      color: #082654;
+    }
+
+    .form-control:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .forgot-password {
+      margin-top: 15px;
+      display: block;
+      font-size: 14px;
+    }
+
+    .input-group-text svg {
+      width: 20px;
+      height: 20px;
+      stroke: #A1B3CE;
+    }
+
+    .custom-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 30px;
+      border: 1px solid #DBDFE6;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: 400;
+      color: #082654;
+      background-color: transparent;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .custom-btn:hover {
+      background-color: #082654;
+      color: white;
+    }
+
+    .custom-btn:hover .plus-icon {
+      color: white;
+    }
+
+    .plus-icon {
+      font-size: 22px;
+      margin-right: 10px;
+      color: #082654;
+    }
+
+    .required {
+      color: red;
+      margin-left: 5px;
+    }
+
+    .underline {
+      text-decoration: underline;
+    }
+
+    .container-rezervace {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .container-noveheslo {
+      max-width: 400px;
+      margin: auto;
+      /* Vycentrování horizontálně */
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* Zarovná obsah na střed */
+      margin-top: 10px;
+    }
+
+    /* Nová třída pro centrování formuláře (možnost 2)
+       Změněno justify-content na flex-start a přidán padding-top, aby byl formulář blíže k navigaci */
+    .centered-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 5px;
+      min-height: calc(100vh - 100px);
+    }
+
+    /* ====== FOOTER (bude vždy dole) ====== */
+    .footer {
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .footer a {
+      color: #082654;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <a class="navbar-brand d-flex align-items-center ms-4" href="#">
+        <img src="logo.png" alt="Heaven Tantric">
+        <span class="divider"></span>
+        <span class="brand-name">Heaven Tantric</span>
+      </a>
+      <div class="ms-auto">
+        <button class="custom-btn" onclick="window.location.href='registrace.html';">
+          <span class="plus-icon">+</span> Registrace
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="centered-wrapper">
+      <h2 class="heading-font mt-4 mb-4 fw-normal">Přihlášení</h2>
+      <div class="form-box">
+        <label for="email" class="form-label text-start w-100">Uživatelské jméno</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text">
+            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_115_4134)">
+                <path
+                  d="M3 9.5V19.25C3 19.4489 3.07902 19.6397 3.21967 19.7803C3.36032 19.921 3.55109 20 3.75 20H20.25C20.4489 20 20.6397 19.921 20.7803 19.7803C20.921 19.6397 21 19.4489 21 19.25V9.5L12 3.5L3 9.5Z"
+                  stroke="#A1B3CE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M10.3639 14.75L3.23145 19.7881" stroke="#A1B3CE" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M20.7682 19.7881L13.6357 14.75" stroke="#A1B3CE" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M21 9.5L13.6369 14.75H10.3641L3 9.5" stroke="#A1B3CE" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </g>
+            </svg>
+          </span>
+          <input type="email" class="form-control" id="email" value="karel@heaven-tantric.cz">
+        </div>
+
+        <label for="password" class="form-label text-start w-100">Heslo</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 10V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V10" stroke="#A1B3CE"
+                stroke-width="1.5" stroke-linecap="round" />
+              <rect x="4" y="10" width="16" height="12" rx="2" stroke="#A1B3CE" stroke-width="1.5" />
+              <path d="M12 15V17" stroke="#A1B3CE" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </span>
+          <input type="password" class="form-control" id="password" value="********">
+        </div>
+
+        <button class="btn btn-primary w-100">Přihlásit se</button>
+        <a href="rezbook-nove-heslo.html" class="forgot-password underline">Nepamatujete si heslo?</a>
+      </div>
+      <p style="margin-top: 28px; color: #082654;">Nemáte účet? <a class="underline" href="registrace.html">Registrovat
+          se</a></p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p class="text-muted m-0">© Vytvořeno službou <a href="#">REZBOOK.CZ</a></p>
+    <p class="text-muted m-0"><a href="#">OCHRANA OSOBNÍCH ÚDAJŮ</a></p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
