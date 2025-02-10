@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heaven Tantric - Rezervace</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- NAVIGACE -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <a class="navbar-brand d-flex align-items-center ms-4" href="#">
+        <img src="logo.png" alt="Heaven Tantric">
+        <span class="divider"></span>
+        <span class="brand-name">Heaven Tantric</span>
+      </a>
+      <div class="nav-filter me-3 w-25">
+        <select class="form-select custom-select">
+          <option>Heaven Tantric Praha</option>
+          <option>Provozovna 2</option>
+          <!-- případně další možnosti -->
+        </select>
+      </div>
+      <div class="d-flex align-items-center">
+        <button class="btn btn-primary me-2 d-flex align-items-center" style="padding: 10px 30px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-2">
+            <g clip-path="url(#clip0_126_3965)">
+              <path
+                d="M16.25 3.125H3.75C3.40482 3.125 3.125 3.40482 3.125 3.75V16.25C3.125 16.5952 3.40482 16.875 3.75 16.875H16.25C16.5952 16.875 16.875 16.5952 16.875 16.25V3.75C16.875 3.40482 16.5952 3.125 16.25 3.125Z"
+                stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M13.75 1.875V4.375" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M6.25 1.875V4.375" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M3.125 6.875H16.875" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </g>
+            <defs>
+              <clipPath id="clip0_126_3965">
+                <rect width="20" height="20" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+          Kalendář
+        </button>
+        <a href="moje-rezervace.html" class="nav-item me-3">Moje rezervace</a>
+        <a href="platby-kredity.html" class="nav-item me-3">Platby</a>
+        <span class="divider"></span>
+        <a href="muj-ucet.html" class="nav-item me-3">Martin Kos</a>
+        <span class="badge ms-3 d-flex align-items-center"
+          style="background-color: #D8F8E8; color: #1A7055; padding: 8px 20px; border-radius: 20px;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-1">
+            <g clip-path="url(#clip0_126_3978)">
+              <path
+                d="M8 10.5C11.5899 10.5 14.5 9.15685 14.5 7.5C14.5 5.84315 11.5899 4.5 8 4.5C4.41015 4.5 1.5 5.84315 1.5 7.5C1.5 9.15685 4.41015 10.5 8 10.5Z"
+                stroke="#1A7055" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M8 10.5V13.5" stroke="#1A7055" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M1.5 7.5V10.5C1.5 12 4 13.5 8 13.5C12 13.5 14.5 12 14.5 10.5V7.5" stroke="#1A7055"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M12 9.8819V12.8819" stroke="#1A7055" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M4 9.8819V12.8819" stroke="#1A7055" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </g>
+            <defs>
+              <clipPath id="clip0_126_3978">
+                <rect width="16" height="16" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+          1 500 Kč
+        </span>
+        <!-- LOGOUT BUTTON -->
+        <button class="logout-btn ms-3">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="14" fill="#BF0D0D" fill-opacity="0.19" />
+            <g clip-path="url(#clip0_126_3986)">
+              <path d="M14 8.375V14" stroke="#DF5353" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M17.375 8.9375C19.0681 10.0414 20.1875 11.828 20.1875 14C20.1875 15.641 19.5356 17.2148 18.3752 18.3752C17.2148 19.5356 15.641 20.1875 14 20.1875C12.359 20.1875 10.7852 19.5356 9.62478 18.3752C8.4644 17.2148 7.8125 15.641 7.8125 14C7.8125 11.828 8.93187 10.0414 10.625 8.9375"
+                stroke="#DF5353" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+            <defs>
+              <clipPath id="clip0_126_3986">
+                <rect width="18" height="18" fill="white" transform="translate(5 5.00006)" />
+              </clipPath>
+            </defs>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hlavní obsah -->
+  <div class="container mt-4">
+    <!-- Filtry -->
+    <div class="filter-container">
+      <div class="filter-group">
+        <label class="filter-label">SLUŽBA</label>
+        <select class="form-select">
+          <option>Trenér ping-pong</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">PRACOVNÍK</label>
+        <select class="form-select">
+          <option>-- vyberte --</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Kalendář -->
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <h2 class="calendar-title">Trenér ping-pong</h2>
+        <div class="calendar-controls">
+          <button class="btn btn-today">DNES</button>
+          <button class="btn btn-date-select">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            VYBRAT DATUM
+          </button>
+          <div class="nav-buttons">
+            <button class="btn btn-nav">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="btn btn-nav">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Kalendářová tabulka -->
+      <table class="calendar-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>14:00</th>
+            <th>14:30</th>
+            <th>15:00</th>
+            <th>15:30</th>
+            <th>16:00</th>
+            <th>16:30</th>
+            <th>17:00</th>
+            <th>17:30</th>
+            <th>18:00</th>
+            <th>18:30</th>
+            <th>19:00</th>
+            <th>19:30</th>
+            <th>20:00</th>
+            <th>20:30</th>
+            <th>21:00</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- PONDĚLÍ -->
+          <tr>
+            <td rowspan="4" class="date-cell today">
+              <div class="today-badge">DNES</div>
+              <div class="date-content">
+                <div class="day-name">PONDĚLÍ</div>
+                <div class="date">16.9.</div>
+              </div>
+            </td>
+            <td rowspan="2" class="table-cell">Stolní tenis - stůl 1</td>
+            <td class="trainer-cell">Novák Jan</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+          </tr>
+          <tr>
+            <td class="trainer-cell">Kobrík Martin</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+          </tr>
+          <tr>
+            <td rowspan="2" class="table-cell">Stolní tenis - stůl 2</td>
+            <td class="trainer-cell">Novák Jan</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+          </tr>
+          <tr>
+            <td class="trainer-cell">Kobrík Martin</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot available">VOLNO</td>
+          </tr>
+
+          <!-- Mezera mezi dny -->
+          <tr class="day-spacing">
+            <td colspan="18"></td>
+          </tr>
+
+          <!-- ÚTERÝ -->
+          <tr>
+            <td rowspan="4" class="date-cell">
+              <div class="date-content">
+                <div class="day-name">ÚTERÝ</div>
+                <div class="date">17.9.</div>
+              </div>
+            </td>
+            <td rowspan="2" class="table-cell">Stolní tenis - stůl 1</td>
+            <td class="trainer-cell">Novák Jan</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot yours">VAŠE</td>
+          </tr>
+          <tr>
+            <td class="trainer-cell">Kobrík Martin</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+          </tr>
+          <tr>
+            <td rowspan="2" class="table-cell">Stolní tenis - stůl 2</td>
+            <td class="trainer-cell">Novák Jan</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+          </tr>
+          <tr>
+            <td class="trainer-cell">Kobrík Martin</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+          </tr>
+
+          <!-- Mezera mezi dny -->
+          <tr class="day-spacing">
+            <td colspan="18"></td>
+          </tr>
+
+          <!-- STŘEDA -->
+          <tr>
+            <td rowspan="4" class="date-cell">
+              <div class="date-content">
+                <div class="day-name">STŘEDA</div>
+                <div class="date">18.9.</div>
+              </div>
+            </td>
+            <td rowspan="2" class="table-cell">Stolní tenis - stůl 1</td>
+            <td class="trainer-cell">Novák Jan</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+          </tr>
+          <tr>
+            <td class="trainer-cell">Kobrík Martin</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+          </tr>
+          <tr>
+            <td rowspan="2" class="table-cell">Stolní tenis - stůl 2</td>
+            <td class="trainer-cell">Novák Jan</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+          </tr>
+          <tr>
+            <td class="trainer-cell">Kobrík Martin</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot available">VOLNO</td>
+          </tr>
+
+          <!-- Mezera mezi dny -->
+          <tr class="day-spacing">
+            <td colspan="18"></td>
+          </tr>
+
+          <!-- ČTVRTEK -->
+          <tr>
+            <td rowspan="4" class="date-cell">
+              <div class="date-content">
+                <div class="day-name">ČTVRTEK</div>
+                <div class="date">19.9.</div>
+              </div>
+            </td>
+            <td rowspan="2" class="table-cell">Stolní tenis - stůl 1</td>
+            <td class="trainer-cell">Novák Jan</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+          </tr>
+          <tr>
+            <td class="trainer-cell">Kobrík Martin</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot available">VOLNO</td>
+          </tr>
+          <tr>
+            <td rowspan="2" class="table-cell">Stolní tenis - stůl 2</td>
+            <td class="trainer-cell">Novák Jan</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+          </tr>
+          <tr>
+            <td class="trainer-cell">Kobrík Martin</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot available">VOLNO</td>
+          </tr>
+
+          <!-- Mezera mezi dny -->
+          <tr class="day-spacing">
+            <td colspan="18"></td>
+          </tr>
+
+          <tr>
+            <td rowspan="4" class="date-cell">
+              <div class="date-content">
+                <div class="day-name">PÁTEK</div>
+                <div class="date">20.9.</div>
+              </div>
+            </td>
+            <td rowspan="2" class="table-cell">Stolní tenis - stůl 1</td>
+            <td class="trainer-cell">Novák Jan</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+          </tr>
+          <tr>
+            <td class="trainer-cell">Kobrík Martin</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot available">VOLNO</td>
+          </tr>
+          <tr>
+            <td rowspan="2" class="table-cell">Stolní tenis - stůl 2</td>
+            <td class="trainer-cell">Novák Jan</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+          </tr>
+          <tr>
+            <td class="trainer-cell">Kobrík Martin</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot available">VOLNO</td>
+          </tr>
+
+          <!-- Mezera mezi dny -->
+          <tr class="day-spacing">
+            <td colspan="18"></td>
+          </tr>
+
+          <!-- SOBOTA - všechno obsazené -->
+          <tr>
+            <td rowspan="4" class="date-cell">
+              <div class="date-content">
+                <div class="day-name">SOBOTA</div>
+                <div class="date">21.9.</div>
+              </div>
+            </td>
+            <td rowspan="2" class="table-cell">Stolní tenis - stůl 1</td>
+            <td class="trainer-cell">Novák Jan</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+          </tr>
+          <tr>
+            <td class="trainer-cell">Kobrík Martin</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+          </tr>
+          <tr>
+            <td rowspan="2" class="table-cell">Stolní tenis - stůl 2</td>
+            <td class="trainer-cell">Novák Jan</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+          </tr>
+          <tr>
+            <td class="trainer-cell">Kobrík Martin</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+          </tr>
+
+          <!-- Mezera mezi dny -->
+          <tr class="day-spacing">
+            <td colspan="18"></td>
+          </tr>
+
+          <!-- NEDĚLE -->
+          <tr>
+            <td rowspan="4" class="date-cell">
+              <div class="date-content">
+                <div class="day-name">NEDĚLE</div>
+                <div class="date">22.9.</div>
+              </div>
+            </td>
+            <td rowspan="2" class="table-cell">Stolní tenis - stůl 1</td>
+            <td class="trainer-cell">Novák Jan</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot yours">VAŠE</td>
+          </tr>
+          <tr>
+            <td class="trainer-cell">Kobrík Martin</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+          </tr>
+          <tr>
+            <td rowspan="2" class="table-cell">Stolní tenis - stůl 2</td>
+            <td class="trainer-cell">Novák Jan</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+          </tr>
+          <tr>
+            <td class="trainer-cell">Kobrík Martin</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot unavailable">PLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot available">VOLNO</td>
+            <td class="time-slot yours">VAŠE</td>
+            <td class="time-slot available">VOLNO</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Přidaná patička s tlačítky -->
+      <div class="calendar-footer">
+        <div class="ms-auto calendar-controls">
+          <button class="btn btn-today">DNES</button>
+          <button class="btn btn-date-select">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            VYBRAT DATUM
+          </button>
+          <div class="nav-buttons">
+            <button class="btn btn-nav">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="btn btn-nav">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tooltip pro cenu -->
+    <div class="price-tooltip" id="priceTooltip">700 Kč / 60 minut</div>
+
+    <!-- Modální okno pro rezervaci -->
+    <div class="modal fade" id="reservationModal" tabindex="-1">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0 p-0 mb-4">
+            <h4 class="modal-title">Rezervace</h4>
+            <button type="button" class="close-icon" data-bs-dismiss="modal">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <div class="modal-body p-0">
+            <div class="reservation-field">
+              <label>PROVOZOVNA:</label>
+              <span>Heaven Tantric Praha</span>
+            </div>
+
+            <div class="reservation-field">
+              <label>SLUŽBA:</label>
+              <span>Trenér ping-pong</span>
+            </div>
+
+            <div class="reservation-field">
+              <label>ITINERÁŘ:</label>
+              <span>Stolní tenis - stůl 2</span>
+            </div>
+
+            <div class="reservation-field">
+              <label>PRACOVNÍK:</label>
+              <span>Novák Jan</span>
+            </div>
+
+            <div class="reservation-field">
+              <label>DATUM:</label>
+              <span>17. 9. 2025 18:00</span>
+            </div>
+
+            <div class="form-group mb-3">
+              <label class="form-label">CENA A DOBA</label>
+              <select class="form-select">
+                <option>700 Kč / 60 minut</option>
+              </select>
+            </div>
+
+            <div class="form-group mb-4">
+              <label class="form-label">ZPŮSOB PLATBY</label>
+              <select class="form-select">
+                <option>--- vyberte ---</option>
+              </select>
+            </div>
+
+            <div class="modal-footer border-0 p-0 d-flex align-items-center justify-content-between">
+              <button class="btn btn-modal-primary">Rezervovat</button>
+              <button class="btn btn-modal-close" data-bs-dismiss="modal">Zavřít</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p class="text-muted">
+        <span>© VYTVOŘENO SLUŽBOU REZBOOK.CZ</span>
+        <span class="mx-2">|</span>
+        <a href="#">OCHRANA OSOBNÍCH ÚDAJŮ</a>
+      </p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Přepínání přihlášení
+      function toggleLogin() {
+        const loggedInNav = document.getElementById('loggedInNav');
+        const loggedOutNav = document.getElementById('loggedOutNav');
+
+        if (loggedInNav.classList.contains('d-none')) {
+          loggedInNav.classList.remove('d-none');
+          loggedOutNav.classList.add('d-none');
+        } else {
+          loggedInNav.classList.add('d-none');
+          loggedOutNav.classList.remove('d-none');
+        }
+      }
+
+      // Tooltip
+      document.querySelectorAll('.time-slot.available').forEach(slot => {
+        slot.addEventListener('mouseover', (e) => {
+          const tooltip = document.getElementById('priceTooltip');
+          const rect = slot.getBoundingClientRect();
+
+          // Výpočet pozice - centrování nad buňkou
+          const tooltipX = rect.left + (rect.width / 2);
+          const tooltipY = rect.top - 10; // 10px mezera nad buňkou
+
+          tooltip.style.display = 'block';
+          tooltip.style.left = `${tooltipX}px`;
+          tooltip.style.top = `${tooltipY}px`;
+
+          tooltip.style.transform = 'translate(-50%, -100%)';
+        });
+
+        slot.addEventListener('mouseout', () => {
+          const tooltip = document.getElementById('priceTooltip');
+          tooltip.style.display = 'none';
+        });
+
+        slot.addEventListener('click', () => {
+          const modal = new bootstrap.Modal(document.getElementById('reservationModal'));
+          modal.show();
+        });
+      });
+    </script>
+</body>
+
+</html>

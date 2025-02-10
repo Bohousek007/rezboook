@@ -1,0 +1,971 @@
+:root {
+    --primary-color: #003399;
+    --success-color: #2d8659;
+    --danger-color: #dc3545;
+    --light-blue: #e5ecfb;
+    --primary-blue: #092969;
+}
+
+
+
+
+
+@media (max-width: 1200px) {
+
+    .nav-link,
+    .username {
+        margin-right: 10px !important;
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    .badge {
+        padding: 4px 8px;
+        font-size: 13px;
+    }
+
+    .btn-calendar {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 992px) {
+    .ms-auto.d-flex.align-items-center {
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+    }
+
+    .nav-separator {
+        display: none;
+    }
+
+    .badge {
+        order: -1;
+    }
+
+    .username {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-brand-text {
+        display: none;
+    }
+
+    .btn-calendar span {
+        display: none;
+    }
+
+
+    .calendar-container {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 0;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    .filter-container {
+        padding: 0 10px;
+        flex-wrap: wrap;
+    }
+
+    .filter-group {
+        flex: 1 1 100%;
+        margin-bottom: 10px;
+    }
+
+}
+
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f3f3;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* ====== NAVIGACE ====== */
+.navbar {
+    background-color: #fff;
+    padding: 12px 60px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    height: 40px;
+}
+
+.plus-icon {
+    font-size: 22px;
+    margin-right: 10px;
+    color: #082654;
+}
+
+.heading-font {
+    color: #082654;
+}
+
+.divider {
+    width: 1px;
+    height: 20px;
+    background-color: #d1d5db;
+    margin: 0 15px;
+}
+
+.brand-name {
+    font-size: 18px;
+    font-weight: 400;
+    color: #082654;
+}
+
+/* ====== HLAVNÍ OBSAH (roztahuje se, aby footer zůstal dole) ====== */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.navbar .nav-item {
+    font-size: 14px;
+    color: #082654;
+    margin-left: 20px;
+}
+
+.navbar .badge {
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+.table-container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* ====== TLAČÍTKA ====== */
+.btn-primary {
+    background-color: #003399;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 24px;
+    font-size: 14px;
+}
+
+.btn-primary:hover {
+    background-color: #002266;
+}
+
+.btn-outline-danger {
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.logout-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    opacity: 0.8;
+}
+
+
+/* Kalendář */
+.calendar-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    padding: 20px;
+    margin: 20px auto;
+    width: fit-content;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 7px 15px;
+}
+
+.calendar-title {
+    color: var(--primary-blue);
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.calendar-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-today,
+.btn-date-select {
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 40px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid #e5e7eb;
+    background: white;
+    color: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-nav {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid #e5e7eb;
+    border-radius: 100px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* Kalendářová tabulka */
+.calendar-table {
+    width: fit-content;
+    min-width: 1300px;
+    max-width: 1300px;
+    border-collapse: separate;
+    border-spacing: 2.5px;
+    padding: 0;
+
+}
+
+.calendar-table thead th {
+    padding: 6px 2px;
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 13px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.calendar-table td.table-cell {
+    width: 125px;
+    min-width: 125px;
+    max-width: 125px;
+    padding: 4px 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    color: var(--primary-blue);
+    background: #fbfbfd;
+    border-bottom: 1px solid #f0f0f5;
+}
+
+.calendar-table td.trainer-cell {
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    padding: 4px 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 11px;
+    color: var(--primary-blue);
+    background: #fbfbfd;
+    border-bottom: 1px solid #f0f0f5;
+}
+
+.calendar-table td.time-slot {
+    width: 42px;
+    min-width: 42px;
+    max-width: 42px;
+    height: 20px;
+    min-height: 20px;
+    max-height: 20px;
+    padding: 4px 2px;
+    line-height: 20px;
+    font-size: 7px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.calendar-table thead th {
+    min-width: 40px;
+    max-width: 40px;
+    width: 40px;
+    padding: 6px 2px;
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 13px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.date-cell {
+    position: relative;
+    background-color: #f1f2f3;
+    padding: 12px 8px;
+    width: 90px;
+    min-width: 90px;
+    max-width: 90px;
+    text-align: center;
+    border-radius: 4px 0 0 4px;
+}
+
+.date-cell.today {
+    background-color: #e2eaf8;
+    color: var(--primary-color);
+}
+
+.date-cell.today .day-name {
+    color: var(--primary-colour);
+}
+
+.date-cell.today .date {
+    color: var(--primary-colour);
+}
+
+.today-badge {
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 8px;
+    z-index: 2;
+}
+
+.date-cell .date-content {
+    position: relative;
+    z-index: 1;
+}
+
+.date-cell .day-name {
+    font-size: 8px;
+    text-transform: uppercase;
+    color: #445585;
+    margin-bottom: 4px;
+    font-weight: 800;
+}
+
+.date-cell .date {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--primary-blue);
+    line-height: 1.2;
+}
+
+.day-spacing td {
+    height: 24px !important;
+    /* Zvětšeno z 16px */
+    background: transparent;
+}
+
+.time-slot.available {
+    background-color: #e8f5ee;
+    color: #168d6b;
+}
+
+.time-slot.unavailable {
+    background-color: #f8d8de;
+    color: #d73232;
+}
+
+.time-slot.yours {
+    background-color: #2d8659;
+    color: white;
+}
+
+.calendar-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+/* Tooltip */
+.price-tooltip {
+    position: fixed;
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 1000;
+    pointer-events: none;
+    display: none;
+}
+
+.price-tooltip::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--primary-blue);
+}
+
+
+/* Filtry */
+.filter-container {
+    gap: 24px;
+    margin: 24px 0;
+    padding: 0 20px;
+    width: fit-content;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.filter-container select {
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    height: 40px;
+    min-width: 200px;
+    background-color: white;
+}
+
+
+.filter-group {
+    flex: 0 0 280px;
+    width: 350px;
+    margin-bottom: 20px;
+}
+
+.filter-group select {
+    width: 100%;
+}
+
+
+.filter-label {
+    display: block;
+    text-transform: uppercase;
+    color: var(--primary-blue);
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-select {
+    width: 75%;
+    height: 40px;
+    padding: 8px 12px;
+    color: var(--primary-blue);
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+
+/* ====== MŮJ ÚČET ====== */
+
+.container-mujucet {
+    max-width: 600px;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.required {
+    color: red;
+}
+
+.btn-back {
+    background: none;
+    border: none;
+    color: #003399;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.btn-primary-mujucet {
+    background-color: #003399;
+    color: white;
+    border: none;
+    width: 85%;
+    border-radius: 30px;
+    padding: 12px;
+    text-align: center;
+    margin-left: 0;
+}
+
+.btn-primary-mujucet:hover {
+    background-color: #002266;
+    color: white;
+}
+
+.muj-ucet-page .form-control,
+.muj-ucet-page .form-select {
+    background-color: #F6F7FB;
+    border: 1px solid #dcdfe6;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #082654;
+    padding: 8px 12px;
+}
+
+
+
+/* ====== PLATBY A KREDITY ====== */
+
+
+.container-kredity {
+    margin-top: 50px;
+    width: 50%;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+/* ====== NOVE HESLO CONTAINER ====== */
+
+.container-noveheslo {
+    max-width: 400px;
+    margin: auto;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+
+/* Zelený blok s aktuálním stavem */
+.background-card {
+    background: #D8F8E8;
+    padding: 20px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    position: relative;
+}
+
+/* Kontejner pro text a tlačítko */
+.status-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* button dobit kredity */
+.dobit-kredity {
+    padding: 20px 90px;
+    font-size: 16px;
+    color: white;
+    background: #0E7F5C;
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+}
+
+/* Kontejner pro mince – umístěný doprostřed dole */
+.coins-container {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.coins-container svg {
+    width: 132px;
+    height: auto;
+}
+
+
+/* ====== TABULKA ====== */
+.table {
+    font-size: 14px;
+    border-collapse: collapse;
+    /* Sloučí okraje buněk */
+    width: 100%;
+    background: white;
+}
+
+.table th,
+.table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #E0E3F0;
+    /* Jemné oddělení řádků */
+    text-align: left;
+}
+
+/* Odstranění box-shadow na buňkách */
+.table td {
+    box-shadow: none;
+}
+
+/* ====== STAVY REZERVACÍ ====== */
+.status-cancelled {
+    color: red;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.status-success {
+    color: #0E7F5C;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+/* ====== TLAČÍTKO ZRUŠIT ====== */
+.btn-cancel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FCE8E8;
+    color: #D82C2C;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-cancel:hover {
+    background-color: #F8D7DA;
+    color: #C82333;
+}
+
+.btn-cancel svg {
+    margin-right: 6px;
+}
+
+.pagination-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.pagination-btn {
+    background-color: transparent;
+    border: 1px solid #A1B3CE;
+    color: #A1B3CE;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: 0.2s ease-in-out;
+}
+
+.pagination-btn:hover {
+    background-color: #E0E7FF;
+    border-color: #6366F1;
+    color: #6366F1;
+}
+
+.entries-dropdown .form-select {
+    width: 70px;
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    background-color: #F9FAFB;
+    color: #1F2937;
+    cursor: pointer;
+}
+
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Zajištění konzistentního stylu nadpisů */
+h2.heading-font {
+    font-size: 30px;
+    /* Zmenšení velikosti nadpisu */
+    font-weight: 400;
+    /* Nastavení méně tučného textu */
+    color: #082654;
+}
+
+
+.background-card {
+    background: #D8F8E8;
+    height: 180px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+a {
+    color: #082654;
+}
+
+.form-box {
+    background: white;
+    padding: 42px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+}
+
+.input-group {
+    background: #F6F7FB;
+    border: 1px solid #dcdfe6;
+    border-radius: 8px;
+    padding: 10px;
+    align-items: center;
+    transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.input-group:focus-within {
+    border: 1px solid #003399;
+    box-shadow: 0 0 5px rgba(0, 51, 153, 0.5);
+}
+
+.input-group-text {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    color: #a1a5b3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+}
+
+.form-control {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #082654;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.forgot-password {
+    margin-top: 15px;
+    display: block;
+    font-size: 14px;
+}
+
+.input-group-text svg {
+    width: 20px;
+    height: 20px;
+    stroke: #A1B3CE;
+}
+
+.custom-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 30px;
+    border: 1px solid #DBDFE6;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #082654;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-btn:hover {
+    background-color: #082654;
+    color: white;
+}
+
+.custom-btn:hover .plus-icon {
+    color: white;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+/* ====== CENTROVÁNÍ FORMULÁŘE ====== */
+.centered-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 5px;
+    min-height: calc(100vh - 100px);
+}
+
+.reservation-field label {
+    color: var(--primary-blue);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: 120px;
+    margin: 0;
+}
+
+.reservation-field span {
+    color: var(--primary-blue);
+    font-size: 14px;
+}
+
+/* Select boxy */
+.form-group label {
+    color: var(--primary-blue);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+
+
+/* Modal */
+
+.modal-sm {
+    max-width: 450px;
+    /* Zvětšená šířka */
+}
+
+.modal-content {
+    border-radius: 8px;
+    border: none;
+    padding: 24px;
+}
+
+.modal-header {
+    border: none;
+    padding-bottom: 20px;
+}
+
+.modal-title {
+    color: var(--primary-blue);
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.reservation-field {
+    margin-bottom: 16px;
+    display: flex;
+    gap: 12px;
+}
+
+.reservation-field label {
+    width: 120px;
+    color: var(--primary-blue);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.btn-modal-primary {
+    background-color: var(--primary-blue);
+    color: white;
+    border-radius: 30px;
+    padding: 8px 24px;
+    border: none;
+    margin-left: 45px;
+    width: 190px;
+}
+
+
+.btn-modal-close {
+    color: #6b7280;
+    font-size: 14px;
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+.btn-modal-close:hover {
+    color: #374151;
+    text-decoration: underline;
+}
+
+
+.btn-close {
+    display: none;
+}
+
+.modal-header .close-icon {
+    cursor: pointer;
+    padding: 4px;
+    color: #6B7280;
+    border: none;
+    background: none;
+}
+
+
+/* ====== FOOTER ====== */
+.footer {
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.footer a {
+    color: #082654;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
